@@ -3,7 +3,11 @@
 --- !u!78 &1
 TagManager:
   serializedVersion: 2
-  tags: []
+  tags:
+  - Rojo
+  - Celeste
+  - Violeta
+  - Verde
   layers:
   - Default
   - TransparentFX

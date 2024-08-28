@@ -9,4 +9,9 @@ public class CambioEscena : MonoBehaviour
     {
         SceneManager.LoadScene(nombre);
     }
+
+    public void Salir()
+    {
+        Debug.Log("Saliste");
+    }
 }

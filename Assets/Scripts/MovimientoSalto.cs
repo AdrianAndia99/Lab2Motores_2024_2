@@ -8,13 +8,14 @@ public class MovimientoSalto : MonoBehaviour
     public int maxJumps = 2;
     int JumpsRemaining;
     private float moveInput;
-
     private Rigidbody2D rb2D;
-
     public Transform groundCheck;
     public float groundCheckDistance;
     public LayerMask whatIsGround;
-    public Vector2 groundCheckDirection = Vector2.down; 
+    public Vector2 groundCheckDirection = Vector2.down;
+
+    public SpriteRenderer _playerSprite;
+
 
     void Start()
     {
