@@ -14,12 +14,16 @@ public class MovimientoSalto : MonoBehaviour
     public LayerMask whatIsGround;
     public Vector2 groundCheckDirection = Vector2.down;
 
-    public SpriteRenderer _playerSprite;
-
+    [SerializeField] private float life;
+    [SerializeField] private float maxLife;
+    [SerializeField] BarraVida barraVida;
 
     void Start()
     {
         rb2D = GetComponent<Rigidbody2D>();
+
+        life = maxLife;
+        barraVida.IniciarBarra(life);
     }
 
     void FixedUpdate()
@@ -28,11 +32,13 @@ public class MovimientoSalto : MonoBehaviour
         IsGrounded();
     }
 
-    void Update()
+    private void OnCollisionEnter2D(Collision2D collision)
     {
-
+        if (collision.gameObject.CompareTag("Enemi"))
+        {
+            TakeDamage(2);
+        }
     }
-
     public void OnMovement(InputAction.CallbackContext context)
     {
         moveInput = context.ReadValue<Vector2>().x;
@@ -69,6 +75,17 @@ public class MovimientoSalto : MonoBehaviour
         else
         {
             JumpsRemaining = 0;
+        }
+    }
+
+    public void TakeDamage(float damage)
+    {
+        life -= damage;
+        barraVida.CambiarVidaActual(life);
+        if(life <= 0)
+        {
+            Debug.Log("Vida");
+            Destroy(gameObject);
         }
     }
 }
