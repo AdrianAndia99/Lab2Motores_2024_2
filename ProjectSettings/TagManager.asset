@@ -9,6 +9,8 @@ TagManager:
   - Violeta
   - Verde
   - Enemi
+  - Insta
+  - Enemi2
   layers:
   - Default
   - TransparentFX

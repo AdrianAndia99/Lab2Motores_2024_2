@@ -1,3 +1,4 @@
+using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.InputSystem;
 
@@ -14,9 +15,12 @@ public class MovimientoSalto : MonoBehaviour
     public LayerMask whatIsGround;
     public Vector2 groundCheckDirection = Vector2.down;
 
-    [SerializeField] private float life;
-    [SerializeField] private float maxLife;
+    [SerializeField] private int life;
+    [SerializeField] private int maxLife;
     [SerializeField] BarraVida barraVida;
+    [SerializeField] private Manager gameManager;
+
+
 
     void Start()
     {
@@ -24,6 +28,7 @@ public class MovimientoSalto : MonoBehaviour
 
         life = maxLife;
         barraVida.IniciarBarra(life);
+        gameManager.TextLifeUpdate(life);
     }
 
     void FixedUpdate()
@@ -36,9 +41,28 @@ public class MovimientoSalto : MonoBehaviour
     {
         if (collision.gameObject.CompareTag("Enemi"))
         {
-            TakeDamage(2);
+            SpriteRenderer playerSpriteRenderer = GetComponent<SpriteRenderer>();
+            SpriteRenderer enemySpriteRenderer = collision.gameObject.GetComponent<SpriteRenderer>();
+
+            if (playerSpriteRenderer.color != enemySpriteRenderer.color)
+            {
+                TakeDamage(2);
+            }
+            else
+            {
+                Debug.Log("Colores iguales, no se recibe daño.");
+            }
+        }
+
+        if (collision.gameObject.CompareTag("Insta"))
+        {
+            gameManager.EndLevel(true);
+        }else if (collision.gameObject.CompareTag("Respawn"))
+        {
+            gameManager.EndLevel(false);
         }
     }
+
     public void OnMovement(InputAction.CallbackContext context)
     {
         moveInput = context.ReadValue<Vector2>().x;
@@ -78,13 +102,20 @@ public class MovimientoSalto : MonoBehaviour
         }
     }
 
-    public void TakeDamage(float damage)
+    public void TakeDamage(int damage)
     {
         life -= damage;
+        if (life < 0)
+        {
+            life = 0;
+        }
         barraVida.CambiarVidaActual(life);
-        if(life <= 0)
+        gameManager.TextLifeUpdate(life);
+
+        if (life == 0)
         {
             Debug.Log("Vida");
+            gameManager.EndLevel(false);
             Destroy(gameObject);
         }
     }

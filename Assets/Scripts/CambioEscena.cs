@@ -8,6 +8,7 @@ public class CambioEscena : MonoBehaviour
     public void Cambio(string nombre)
     {
         SceneManager.LoadScene(nombre);
+        Time.timeScale = 1f;
     }
 
     public void Salir()
