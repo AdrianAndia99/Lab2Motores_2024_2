@@ -20,15 +20,12 @@ public class MovimientoSalto : MonoBehaviour
     [SerializeField] BarraVida barraVida;
     [SerializeField] private Manager gameManager;
 
-
-
     void Start()
     {
         rb2D = GetComponent<Rigidbody2D>();
 
         life = maxLife;
         barraVida.IniciarBarra(life);
-        gameManager.TextLifeUpdate(life);
     }
 
     void FixedUpdate()
@@ -56,10 +53,26 @@ public class MovimientoSalto : MonoBehaviour
 
         if (collision.gameObject.CompareTag("Insta"))
         {
-            gameManager.EndLevel(true);
+            gameManager.EndGame(true);
+
         }else if (collision.gameObject.CompareTag("Respawn"))
         {
-            gameManager.EndLevel(false);
+            gameManager.EndGame(false);
+        }
+    }
+    private void OnTriggerEnter2D(Collider2D other)
+    {
+        if (other.CompareTag("Money"))
+        {
+            int points = 10;
+            GameEvents.ScoreUpdated(points);
+            Destroy(other.gameObject);
+        }
+        else if (other.CompareTag("Heart"))
+        {
+            int healAmount = 20;
+            Heal(healAmount);
+            Destroy(other.gameObject);
         }
     }
 
@@ -105,18 +118,24 @@ public class MovimientoSalto : MonoBehaviour
     public void TakeDamage(int damage)
     {
         life -= damage;
-        if (life < 0)
-        {
-            life = 0;
-        }
-        barraVida.CambiarVidaActual(life);
-        gameManager.TextLifeUpdate(life);
+        life = Mathf.Clamp(life, 0, maxLife);
 
+        barraVida.CambiarVidaActual(life);
+        GameEvents.LifeUpdated(life);  // Llamamos al evento
+
+        Debug.Log("Vida");
         if (life == 0)
         {
-            Debug.Log("Vida");
-            gameManager.EndLevel(false);
+            GameEvents.GameEnd(false);  // Llamamos al evento de derrota
             Destroy(gameObject);
         }
+    }
+    public void Heal(int amount)
+    {
+        life += amount;
+        life = Mathf.Clamp(life, 0, maxLife);
+
+        barraVida.CambiarVidaActual(life);
+        GameEvents.LifeUpdated(life);  // Llamamos al evento
     }
 }

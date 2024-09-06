@@ -11,6 +11,8 @@ TagManager:
   - Enemi
   - Insta
   - Enemi2
+  - Money
+  - Heart
   layers:
   - Default
   - TransparentFX

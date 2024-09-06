@@ -8,12 +8,14 @@ public class Manager : MonoBehaviour
 {
     [SerializeField] private TextMeshProUGUI TextTime;
     [SerializeField] private TextMeshProUGUI TextLife;
+    [SerializeField] private TextMeshProUGUI TextScore;
     [SerializeField] private GameObject panelWinOrLose;
     [SerializeField] private GameObject panelPause;
     [SerializeField] private TextMeshProUGUI TextResult;
     [SerializeField] private TextMeshProUGUI AnotherTime;
     [SerializeField] private GameObject buttonP;
 
+    private int score = 0;
     private float time;
     private float timeSpeed = 2.0f;
     private bool finish = false;
@@ -26,6 +28,19 @@ public class Manager : MonoBehaviour
             TextTime.text = "Tiempo " + time.ToString("F2");
 
         }
+    }
+    private void OnEnable()
+    {
+        GameEvents.OnLifeUpdated += UpdateLifeUI;
+        GameEvents.OnScoreUpdated += UpdateScoreUI;
+        GameEvents.OnGameEnd += EndGame;
+    }
+
+    private void OnDisable()
+    {
+        GameEvents.OnLifeUpdated -= UpdateLifeUI;
+        GameEvents.OnScoreUpdated -= UpdateScoreUI;
+        GameEvents.OnGameEnd -= EndGame;
     }
     public void Pause()
     {
@@ -46,30 +61,22 @@ public class Manager : MonoBehaviour
 
         }
     }
-    public void TextLifeUpdate(int vida)
+    private void UpdateLifeUI(int newLife)
     {
-        if (TextLife != null)
-        {
-            TextLife.text = "Vida: " + vida;
-        }
+        TextLife.text = "Vida: " + newLife;
     }
 
-    public void EndLevel(bool ending)
+    private void UpdateScoreUI(int newScore)
     {
-        finish = true;
-        Time.timeScale = 0f;
+        int currentScore = int.Parse(TextScore.text.Split(':')[10]);
+        currentScore += newScore;
+        TextScore.text = "Puntos: " + currentScore;
+    }
 
-        if (ending)
-        {
-            TextResult.text = " GANASTE ";
-        }
-        else
-        {
-            TextResult.text = "PERDISTE";
-        }
-
-        AnotherTime.text = TextTime.text;
-
+    public void EndGame(bool victory)
+    {
         panelWinOrLose.SetActive(true);
+        TextResult.text = victory ? "¡GANASTE!" : "PERDISTE";
+        Time.timeScale = 0f;
     }
 }
