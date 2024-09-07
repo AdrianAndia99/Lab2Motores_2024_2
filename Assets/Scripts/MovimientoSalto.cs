@@ -121,12 +121,12 @@ public class MovimientoSalto : MonoBehaviour
         life = Mathf.Clamp(life, 0, maxLife);
 
         barraVida.CambiarVidaActual(life);
-        GameEvents.LifeUpdated(life);  // Llamamos al evento
+        GameEvents.LifeUpdated(life);
 
         Debug.Log("Vida");
         if (life == 0)
         {
-            GameEvents.GameEnd(false);  // Llamamos al evento de derrota
+            GameEvents.GameEnd(false);
             Destroy(gameObject);
         }
     }
@@ -136,6 +136,6 @@ public class MovimientoSalto : MonoBehaviour
         life = Mathf.Clamp(life, 0, maxLife);
 
         barraVida.CambiarVidaActual(life);
-        GameEvents.LifeUpdated(life);  // Llamamos al evento
+        GameEvents.LifeUpdated(life);
     }
 }

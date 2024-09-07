@@ -68,9 +68,8 @@ public class Manager : MonoBehaviour
 
     private void UpdateScoreUI(int newScore)
     {
-        int currentScore = int.Parse(TextScore.text.Split(':')[10]);
-        currentScore += newScore;
-        TextScore.text = "Puntos: " + currentScore;
+        score += newScore;
+        TextScore.text = "Puntos: " + score;
     }
 
     public void EndGame(bool victory)
