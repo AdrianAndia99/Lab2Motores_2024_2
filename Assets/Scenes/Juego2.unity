@@ -4481,6 +4481,22 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 1838945587}
         m_TargetAssemblyTypeName: MovimientoSalto, Assembly-CSharp
+        m_MethodName: OnJump
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+    m_ActionId: 99e7d000-a51e-4747-9522-e49f9e77a638
+    m_ActionName: PlayerControl/Jump[/Keyboard/space]
+  - m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 1838945587}
+        m_TargetAssemblyTypeName: MovimientoSalto, Assembly-CSharp
         m_MethodName: OnMovement
         m_Mode: 0
         m_Arguments:
@@ -4495,9 +4511,9 @@ MonoBehaviour:
     m_ActionName: PlayerControl/Movement[/Keyboard/a,/Keyboard/d]
   - m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 1838945587}
-        m_TargetAssemblyTypeName: MovimientoSalto, Assembly-CSharp
-        m_MethodName: OnJump
+      - m_Target: {fileID: 533509654}
+        m_TargetAssemblyTypeName: CambiaColor, Assembly-CSharp
+        m_MethodName: OnChangeColor
         m_Mode: 0
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -4507,10 +4523,10 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
-    m_ActionId: 99e7d000-a51e-4747-9522-e49f9e77a638
-    m_ActionName: PlayerControl/Jump[/Keyboard/space]
+    m_ActionId: 3d212504-dcbb-43b4-91c7-aa5fa2785cd9
+    m_ActionName: PlayerControl/ChangeColor[/Keyboard/y,/Keyboard/i,/Keyboard/o,/Keyboard/u]
   m_NeverAutoSwitchControlSchemes: 0
-  m_DefaultControlScheme: 
+  m_DefaultControlScheme: Keyboard
   m_DefaultActionMap: PlayerControl
   m_SplitScreenIndex: -1
   m_Camera: {fileID: 0}

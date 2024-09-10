@@ -17,6 +17,10 @@ public class EnemyPatrol : MonoBehaviour
 
     void Update()
     {
+        PatrolEnemy();
+    }
+    private void PatrolEnemy()
+    {
         transform.position = Vector3.MoveTowards(transform.position, target, speed * Time.deltaTime);
 
         if (Vector3.Distance(transform.position, target) < 0.1f)
