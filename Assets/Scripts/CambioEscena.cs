@@ -14,5 +14,6 @@ public class CambioEscena : MonoBehaviour
     public void Salir()
     {
         Debug.Log("Saliste");
+        Application.Quit();
     }
 }
