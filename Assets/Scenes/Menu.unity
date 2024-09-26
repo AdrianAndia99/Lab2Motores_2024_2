@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.11628667, g: 0.42392465, b: 0.73009616, a: 1}
+  m_IndirectSpecularColor: {r: 0.11614844, g: 0.42369047, b: 0.7299478, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -615,7 +615,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   button: {fileID: 426187111}
   minScale: 0.2
-  maxScale: 2.5
+  maxScale: 1.5
   interval: 1
 --- !u!1 &496945222
 GameObject:
@@ -1551,7 +1551,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   button: {fileID: 669497651}
   minScale: 0.6
-  maxScale: 3
+  maxScale: 1.5
   interval: 5
 --- !u!1 &737056182
 GameObject:
@@ -2805,7 +2805,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   button: {fileID: 1616147837}
   minScale: 0.3
-  maxScale: 2
+  maxScale: 1.5
   interval: 3
 --- !u!1 &1700212418
 GameObject:
