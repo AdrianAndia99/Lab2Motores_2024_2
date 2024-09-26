@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0ac4192803635624cae0b7028c835301, type: 3}
   m_Name: BackGround
   m_EditorClassIdentifier: 
-  audioClip: {fileID: 0}
-  mixerSO: {fileID: 11400000, guid: 73e04c51b1690014285bc047fbc4645e, type: 2}
+  audioClip: {fileID: 8300000, guid: 7dc1c6dc046e80345ba2d33249afdc51, type: 3}
+  mixerSO: {fileID: 11400000, guid: 16c6c373b0297f3439c00ef7aa8836ce, type: 2}
   volume: 1
   pitch: 1

@@ -15,4 +15,4 @@ MonoBehaviour:
   mainMixer: {fileID: 24100000, guid: 4215e17e9fcfa09448684986a381e5c8, type: 2}
   groupMixer: {fileID: 2937768604689053405, guid: 4215e17e9fcfa09448684986a381e5c8, type: 2}
   volumeKey: SFX
-  volumeValue: 0
+  volumeValue: 0.8
