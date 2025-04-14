@@ -11,6 +11,10 @@ public class CambioEscena : MonoBehaviour
         Time.timeScale = 1f;
     }
 
+    public void Restart()
+    {
+        SceneManager.LoadScene("MemoryCards");
+    }
     public void Salir()
     {
         Debug.Log("Saliste");
