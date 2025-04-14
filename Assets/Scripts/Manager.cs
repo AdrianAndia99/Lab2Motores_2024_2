@@ -18,8 +18,6 @@ public class Manager : MonoBehaviour
     private int score = 0;
     private float time;
     private float timeSpeed = 2.0f;
-    private bool finish = false;
-
     private void Update()
     {
         if(TextTime != null)
