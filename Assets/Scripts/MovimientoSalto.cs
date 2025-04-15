@@ -30,7 +30,7 @@ public class MovimientoSalto : MonoBehaviour
 
     void FixedUpdate()
     {
-        rb2D.velocity = new Vector2(moveInput * speed, rb2D.velocity.y);
+        rb2D.linearVelocity = new Vector2(moveInput * speed, rb2D.linearVelocity.y);
         IsGrounded();
     }
 
@@ -47,7 +47,7 @@ public class MovimientoSalto : MonoBehaviour
             }
             else
             {
-                Debug.Log("Colores iguales, no se recibe daño.");
+                Debug.Log("Colores iguales, no se recibe daï¿½o.");
             }
         }
 
@@ -88,12 +88,12 @@ public class MovimientoSalto : MonoBehaviour
         {
             if (context.performed)
             {
-                rb2D.velocity = new Vector2(rb2D.velocity.x, jumpforce);
+                rb2D.linearVelocity = new Vector2(rb2D.linearVelocity.x, jumpforce);
                 JumpsRemaining--;
             }
             else if (context.canceled)
             {
-                rb2D.velocity = new Vector2(rb2D.velocity.x, rb2D.velocity.y * 0.5f);
+                rb2D.linearVelocity = new Vector2(rb2D.linearVelocity.x, rb2D.linearVelocity.y * 0.5f);
                 JumpsRemaining--;
             }
             Debug.Log("SALTA");
