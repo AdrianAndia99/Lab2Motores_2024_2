@@ -4,10 +4,16 @@ using TMPro;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
-public class CambioEscena : MonoBehaviour
+public class SceneManagerCode : MonoBehaviour
 {
     public TextMeshProUGUI textSample;
 
+    void Awake()
+    {
+#if UNITY_WEBGL && !UNITY_EDITOR
+        WebGLInput.captureAllKeyboardInput = false;
+#endif
+    }
     public void Cambio(string nombre)
     {
         SceneManager.LoadScene(nombre);
