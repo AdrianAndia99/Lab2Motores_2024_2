@@ -6,9 +6,6 @@ EditorBuildSettings:
   serializedVersion: 2
   m_Scenes:
   - enabled: 0
-    path: Assets/Scenes/Menu.unity
-    guid: 2cda990e2423bbf4892e6590ba056729
-  - enabled: 1
     path: Assets/CLOUDGAMES2/Juego.unity
     guid: f0d03c2b0ecf74c479408094b73fac1e
   - enabled: 0
@@ -17,5 +14,17 @@ EditorBuildSettings:
   - enabled: 0
     path: Assets/CLOUDGAMES1/MemoryCards.unity
     guid: 23f9fad357dcaf54badee44fdda430f9
+  - enabled: 1
+    path: Assets/Juego4CLOUD/Scenes/Menu.unity
+    guid: ca04d022229b35f4dbb79428634c3cb2
+  - enabled: 1
+    path: Assets/Juego4CLOUD/Scenes/Lore.unity
+    guid: 8a8582c0896533a4aad6a1f982fee303
+  - enabled: 1
+    path: Assets/Juego4CLOUD/Scenes/Game.unity
+    guid: 0f182a9f7af0cfb4288de0c4dcd45283
+  - enabled: 1
+    path: Assets/Juego4CLOUD/Scenes/GameOver.unity
+    guid: b4fd15bd0241b424785255e733664c6a
   m_configObjects: {}
   m_UseUCBPForAssetBundles: 0
