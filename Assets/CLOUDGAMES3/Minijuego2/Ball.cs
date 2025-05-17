@@ -12,6 +12,7 @@ public class Ball : MonoBehaviour
     {
         if (collision.collider.CompareTag("Dead"))
         {
+
             OnDefeat?.Invoke();
         }
         if (collision.collider.CompareTag("Platform"))
