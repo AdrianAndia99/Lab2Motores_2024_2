@@ -4,7 +4,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
-public class GameManager : MonoBehaviour
+public class GameManagerXD : MonoBehaviour
 {
     public Sprite backcardSprite;
     private bool firstGuess, secondGuess;
@@ -29,11 +29,6 @@ public class GameManager : MonoBehaviour
     //public AudioSource audioSourcetwo;
     //public AudioClip goodAudio;
     //public AudioClip wrongAudio;
-
-    void Awake() 
-    {
-        
-    }
     void Start()
     {
         totalMatches = cardPool.Length;
