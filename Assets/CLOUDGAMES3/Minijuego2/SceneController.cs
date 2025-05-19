@@ -9,6 +9,8 @@ public class SceneController : MonoBehaviour
     [SerializeField] private GameObject panelDefeat;
     [SerializeField] private TextMeshProUGUI timerText;
     [SerializeField] private TextMeshProUGUI finalTimerText;
+    [SerializeField] private TextMeshProUGUI nameTEXT;
+
 
     private float timeElapsed = 0f;
     private bool isPlayerAlive = true;
@@ -22,6 +24,15 @@ public class SceneController : MonoBehaviour
     {
 
         Ball.OnDefeat -= LoadDefeatScene;
+    }
+
+     private void Awake()
+    {
+
+#if UNITY_WEBGL && !UNITY_EDITOR
+            WebGLInput.captureAllKeyboardInput = false;
+#endif
+
     }
     void Update()
     {
@@ -41,7 +52,15 @@ public class SceneController : MonoBehaviour
     {
         isPlayerAlive = false;
         panelDefeat.SetActive(true);
-        finalTimerText.text = $"¡Sobreviviste {timerText.text}";
+        finalTimerText.text = $"ï¿½Sobreviviste {timerText.text}";
+    }
+    public void ChangeText(string text)
+    {
+        nameTEXT.text = text;
+    }
+    public void RestartGame()
+    {
+        SceneManager.LoadScene("MiniJuego2");
     }
     public void loadScene(string scen)
     {

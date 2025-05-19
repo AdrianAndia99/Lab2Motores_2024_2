@@ -18,10 +18,6 @@ public class RangeBullet : MonoBehaviour
     {
         _compRigidbody2D = GetComponent<Rigidbody2D>();
     }
-    private void Start()
-    {
-        AudioManagerController.Instance.PlaySfx(7);
-    }
 
     private void FixedUpdate()
     {
@@ -81,7 +77,6 @@ public class RangeBullet : MonoBehaviour
                 BasicEnemy enemy = other.gameObject.GetComponent<BasicEnemy>();
                 if (enemy != null)
                 {
-                    AudioManagerController.Instance.PlaySfx(5);
                     enemy.life -= damage;
                     if (enemy.life <= 0)
                     {
@@ -91,7 +86,6 @@ public class RangeBullet : MonoBehaviour
                         {
                             Instantiate(enemy.mysteryBoxPrefab, transform.position, Quaternion.identity);
                         }
-                        AudioManagerController.Instance.PlaySfx(4);
                         UIManagerController.Instance.EnemyEliminated();
                         Destroy(enemy.gameObject);
                     }
@@ -104,7 +98,6 @@ public class RangeBullet : MonoBehaviour
                 KamikazeEnemy enemy = other.gameObject.GetComponent<KamikazeEnemy>();
                 if (enemy != null)
                 {
-                    AudioManagerController.Instance.PlaySfx(5);
                     enemy.life -= damage;
                     if (enemy.life <= 0)
                     {
@@ -114,7 +107,6 @@ public class RangeBullet : MonoBehaviour
                         {
                             Instantiate(enemy.mysteryBoxPrefab, transform.position, Quaternion.identity);
                         }
-                        AudioManagerController.Instance.PlaySfx(4);
                         UIManagerController.Instance.EnemyEliminated();
                         Destroy(enemy.gameObject);
                     }
@@ -126,12 +118,10 @@ public class RangeBullet : MonoBehaviour
                 Obstacle enemy = other.gameObject.GetComponent<Obstacle>();
                 if (enemy != null)
                 {
-                    enemy.SelectSound();
                     enemy.life -= damage;
                     if (enemy.life <= 0)
                     {
                         Instantiate(explosionPrefab, transform.position, Quaternion.identity);
-                        AudioManagerController.Instance.PlaySfx(4);
                         Destroy(enemy.gameObject);
                     }
                 }
@@ -144,14 +134,11 @@ public class RangeBullet : MonoBehaviour
                 BossController enemy = other.gameObject.GetComponent<BossController>();
                 if (enemy != null)
                 {
-                    AudioManagerController.Instance.PlaySfx(5);
                     enemy.life -= damage;
                     if (enemy.life <= 0)
                     {
                         Instantiate(explosionPrefab, transform.position, Quaternion.identity);
                         PlayerController.Instance.currentPowerUp = powerUp;
-                        AudioManagerController.Instance.PlaySfx(1);
-                        AudioManagerController.Instance.PlaySfx(4);
                         UIManagerController.Instance.EnemyEliminated();
                         Destroy(enemy.gameObject);
                     }

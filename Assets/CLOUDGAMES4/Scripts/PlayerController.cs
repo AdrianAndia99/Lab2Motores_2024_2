@@ -1,6 +1,7 @@
 using UnityEngine;
 using UnityEngine.InputSystem;
 using UnityEngine.Events;
+using UnityEngine.SceneManagement;
 public class PlayerController : MonoBehaviour
 {
     public static PlayerController Instance { get; private set; }
@@ -45,7 +46,7 @@ public class PlayerController : MonoBehaviour
             // Si la vida llega a 0, cambiamos a la escena de "game over"
             if (life <= 0)
             {
-                GameManagerController.Instance.ChangeScene("GameOver");
+                SceneManager.LoadScene("GameOver");
             }
         }
     }
@@ -99,7 +100,6 @@ public class PlayerController : MonoBehaviour
             // Si no, usa el disparo normal
             else
             {
-                AudioManagerController.Instance.PlaySfx(3);
                 Instantiate(basicbullet, transform.position, Quaternion.identity);
             }
         }

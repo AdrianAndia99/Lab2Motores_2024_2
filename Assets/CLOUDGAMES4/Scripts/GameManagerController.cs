@@ -1,30 +1,29 @@
 using UnityEngine;
 using UnityEngine.SceneManagement;
+using TMPro;
 public class GameManagerController : MonoBehaviour
 {
-    public static GameManagerController Instance { get; private set; }
+    public TextMeshProUGUI textSample;
+
     private void Awake()
     {
-        if (Instance != null && Instance != this)
-        {
-            Destroy(this.gameObject);
-        }
-        else
-        {
-            Instance = this;
-        }
+
+#if UNITY_WEBGL && !UNITY_EDITOR
+            WebGLInput.captureAllKeyboardInput = false;
+#endif
+
     }
-    void Start()
-    {
-        AudioManagerController.Instance.LoadAudioSettings();
-    }
+
     public void ChangeScene(string scene)
     {
-        AudioManagerController.Instance.SaveAudioSettings();
         SceneManager.LoadScene(scene);
     }
-    public void CloseGame()
+    public void ChangeText(string text)
     {
-        Application.Quit();
+        textSample.text = text;
+    }
+    public void RestartGame()
+    {
+        SceneManager.LoadScene("Menu");
     }
 }

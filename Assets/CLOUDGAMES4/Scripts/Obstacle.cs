@@ -29,28 +29,12 @@ public class Obstacle : MonoBehaviour
         Vector2 direction = moveUp ? new Vector2(1, 1) : new Vector2(1, -1);
         _compRigidBody2D.linearVelocity = direction * speed;
     }
-    public void SelectSound()
-    {
-        if (type == ObstacleType.Asteroid)
-        {
-            AudioManagerController.Instance.PlaySfx(AsteroidSound);
-        }
-        else if (type == ObstacleType.SpaceGarbage)
-        {
-            AudioManagerController.Instance.PlaySfx(SpaceGarbageSound);
-        }
-        else if (type == ObstacleType.EnemyPieces)
-        {
-            AudioManagerController.Instance.PlaySfx(EnemyPiecesSound);
-        }
-    }
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
         if (collision.tag == "Player")
         {
             Instantiate(explosionPrefab, transform.position, Quaternion.identity);
-            AudioManagerController.Instance.PlaySfx(4);
             PlayerController.Instance.Life = PlayerController.Instance.Life - damage;
             Destroy(this.gameObject);
         }
@@ -63,13 +47,11 @@ public class Obstacle : MonoBehaviour
             BasicBullet bullet = collision.gameObject.GetComponent<BasicBullet>();
             if (bullet != null)
             {
-                SelectSound();
                 life -= bullet.damage;
                 Destroy(bullet.gameObject);
                 if (life <= 0)
                 {
                     Instantiate(explosionPrefab, transform.position, Quaternion.identity);
-                    AudioManagerController.Instance.PlaySfx(4);
                     Destroy(this.gameObject);
                 }
             }
@@ -79,13 +61,11 @@ public class Obstacle : MonoBehaviour
             PerforatorBullet bullet = collision.gameObject.GetComponent<PerforatorBullet>();
             if (bullet != null)
             {
-                SelectSound();
                 life -= bullet.damage;
                 if (life <= 0)
                 {
 
                     Instantiate(explosionPrefab, transform.position, Quaternion.identity);
-                    AudioManagerController.Instance.PlaySfx(4);
                     Destroy(this.gameObject);
                 }
             }
@@ -95,13 +75,11 @@ public class Obstacle : MonoBehaviour
             TripleBullet bullet = collision.gameObject.GetComponent<TripleBullet>();
             if (bullet != null)
             {
-                SelectSound();
                 life -= bullet.damage;
                 Destroy(bullet.gameObject);
                 if (life <= 0)
                 {
                     Instantiate(explosionPrefab, transform.position, Quaternion.identity);
-                    AudioManagerController.Instance.PlaySfx(4);
                     Destroy(this.gameObject);
                 }
             }
@@ -111,13 +89,11 @@ public class Obstacle : MonoBehaviour
             TripleBulletPrefab bullet = collision.gameObject.GetComponent<TripleBulletPrefab>();
             if (bullet != null)
             {
-                SelectSound();
                 life -= bullet.damage;
                 Destroy(bullet.gameObject);
                 if (life <= 0)
                 {
                     Instantiate(explosionPrefab, transform.position, Quaternion.identity);
-                    AudioManagerController.Instance.PlaySfx(4);
                     Destroy(this.gameObject);
                 }
             }

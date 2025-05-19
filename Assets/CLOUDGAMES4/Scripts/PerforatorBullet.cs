@@ -11,10 +11,6 @@ public class PerforatorBullet : MonoBehaviour
     {
         _compRigidBody2D = GetComponent<Rigidbody2D>();
     }
-    private void Start()
-    {
-        AudioManagerController.Instance.PlaySfx(6);
-    }
     private void FixedUpdate()
     {
         _compRigidBody2D.linearVelocity = new Vector2(speed, 0);

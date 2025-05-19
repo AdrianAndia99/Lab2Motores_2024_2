@@ -30,12 +30,10 @@ public class MysteryBox : MonoBehaviour
             if (randomIndex == powerUps.Length)
             {
                 // Aumentamos la vida del jugador en un rango de 1 a 3 vidas
-                AudioManagerController.Instance.PlaySfx(2);
                 PlayerController.Instance.Life += Random.Range(1, 4);
             }
             else
             {
-                AudioManagerController.Instance.PlaySfx(1);
                 // Si no, asignamos el power up seleccionado al jugador
                 GameObject powerUp = powerUps[randomIndex];
                 PlayerController.Instance.currentPowerUp = powerUp;

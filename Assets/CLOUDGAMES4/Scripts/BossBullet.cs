@@ -14,7 +14,6 @@ public class BossBullet : MonoBehaviour
     {
         if(collision.tag == "Player")
         {
-            AudioManagerController.Instance.PlaySfx(5);
             player.Life = player.Life - damage;
             Destroy(this.gameObject);
         }
